@@ -43,7 +43,7 @@ class StorePicker extends Component {
     return(      
       <div className="storepicker">
             
-            <form onSubmit={(e) => this.gotoStore(e)}>
+            {/* <form onSubmit={(e) => this.gotoStore(e)}>
               <label>Enter Name</label>
               <input 
                 type="text" 
@@ -53,7 +53,7 @@ class StorePicker extends Component {
                 
               />
               <button type="submit" value="submit">Visit Store -></button>
-            </form>
+            </form> */}
      
       <div className="storepicker">
         <div className="menu">
