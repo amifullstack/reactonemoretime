@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, ControlLabel, Button, FormControl} from 'react-bootstrap';
+import PropTypes from 'prop-types'
+import { Redirect } from 'react-router'
 
 // css
 import './StorePicker.css';
@@ -15,28 +17,42 @@ import {getFunName} from '../Shared/Helper'
 class StorePicker extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      redirect: false
+    }
   }
 
-  // sayHi(e) {
-  //   alert("HI" + this.refs.name.value)
-
-  //   e.preventDefault();
-  // }
+  gotoStore(e) {
+    e.preventDefault();
+    // // alert("HI" + this.refs.name.value)
+    // const storeId = this.refs.name.value;
+    // // // console.log(storeId);
+    // // this.setState({
+    // //   redirect: true,
+    // // }) 
+    // const { router } = this.context;
+    // router.transtionTo(`/store/${storeId}`);
+  }
 
   render() {
+    if(this.state.redirect) {
+      return(
+        <Redirect push to="/"/>
+      )
+    }
     return(      
       <div className="storepicker">
             
-            <form onSubmit={(e) => this.sayHi(e)}>
+            <form onSubmit={(e) => this.gotoStore(e)}>
               <label>Enter Name</label>
               <input 
                 type="text" 
                 placeholder="Enter text"
-                ref="name"
+                ref="name" 
                 defaultValue={getFunName()}
                 
               />
-              <input type="submit" value="submit" />
+              <button type="submit" value="submit">Visit Store -></button>
             </form>
      
       <div className="storepicker">
@@ -51,4 +67,10 @@ class StorePicker extends Component {
     )
   }
 }
+
+// StorePicker.contextTypes = {
+//   router: React.PropTypes.object
+// }
+   
+
 export default StorePicker;
