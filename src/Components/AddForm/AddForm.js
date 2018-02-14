@@ -23,14 +23,16 @@ class AddForm extends Component {
     this.setState({
       newfishData: {
         id: fid.v4(),
-        fishname: this.refs.fishname.value,
-        fishprice: this.refs.fishprice.value,
-        fishstatus: this.refs.fishstatus.value,
-        fishdescription: this.refs.fishdescription.value,
-        fishimage: this.refs.fishimage.value
+        fishname: this.fishname.value,
+        fishprice: this.fishprice.value,
+        fishstatus: this.fishstatus.value,
+        fishdescription: this.fishdescription.value,
+        fishimage: this.fishimage.value
       }
     }, () => {this.props.addFish(this.state.newfishData) //parent component
-    });
+    })
+    this.addFishForm.reset();
+    
   }
 
 
@@ -45,14 +47,15 @@ class AddForm extends Component {
 
     return(
       <div>
-        <form className="fish-edit" onSubmit={(e) => this.handleSubmit(e)}>
-          <input type="text" placeholder="Fish Name" ref="fishname" /><br/>
-          <input type="text" placeholder="Fish price" ref="fishprice"/><br/>
-          <select ref="fishstatus">
+        <form className="fish-edit" onSubmit={(e) => this.handleSubmit(e)} 
+          ref={(el) => this.addFishForm = el} >
+          <input type="text" placeholder="Fish Name" ref={(input) =>this.fishname=input }/><br/>
+          <input type="text" placeholder="Fish price" ref={(input) =>this.fishprice=input}/><br/>
+          <select ref={(input) =>this.fishstatus=input}>
             {fishStatusOption}
           </select><br/>
-          <textarea type="text" placeholder="Fish Desc" ref="fishdescription" /><br/>
-          <input type="text" placeholder="Fish Image" ref="fishimage" /><br/>
+          <textarea type="text" placeholder="Fish Desc" ref={(input) =>this.fishdescription=input} /><br/>
+          <input type="text" placeholder="Fish Image" ref={(input) =>this.fishimage=input} /><br/>
           <button type="submit">Add</button>
         </form>
       </div>

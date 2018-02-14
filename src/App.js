@@ -18,7 +18,7 @@ class App extends Component {
 
           <Switch>
           <Route exact path='/' component={Home} />
-          <Route path ='/account/profile/:id' component={ProfilePage} />          
+          <Route path ='/account/profile/:id' component={ProfilePage} />
           <Route path='/storepicker' component={StorePicker} />          
           
           {/* Add all route above this line */}
